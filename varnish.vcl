@@ -23,8 +23,8 @@ sub vcl_recv {
     #
     # Typically you clean up the request here, removing cookies you don't need,
     # rewriting the request, etc.
-    set req.url = regsub( req.url, "latitude=([0-9]{2}).([0-9]{2})([0-9]*)", "latitude=\1.\2");
-    set req.url = regsub( req.url, "longitude=([0-9]{2}).([0-9]{2})([0-9]*)", "longitude=\1.\2");
+    set req.url = regsub( req.url, "latitude=([-]*)([0-9]{2}).([0-9]{2})([0-9]*)", "latitude=\1\2.\3");
+    set req.url = regsub( req.url, "longitude=([-]*)([0-9]{2}).([0-9]{2})([0-9]*)", "longitude=\1\2.\3");
 }
 
 sub vcl_backend_response {
